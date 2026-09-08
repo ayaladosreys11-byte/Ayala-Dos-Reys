@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayala Dos Reys — Produtor & Artista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#151022;
+    --paper:#F7F3ED;
+    --pink:#FF3E7F;
+    --violet:#7B2FF7;
+    --blue:#2E9BFF;
+    --yellow:#FFC93C;
+    --card-dark:#1D1730;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Space Grotesk', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+
+  .display{
+    font-family:'Archivo Black', sans-serif;
+    line-height:0.95;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px clamp(20px,5vw,64px);
+    mix-blend-mode:difference;
+  }
+  .logo{
+    font-family:'Archivo Black', sans-serif;
+    color:#fff;
+    font-size:20px;
+    letter-spacing:0.5px;
+  }
+  .nav-links{
+    display:flex;
+    gap:clamp(16px,3vw,36px);
+    color:#fff;
+    font-size:15px;
+  }
+  .nav-links a{opacity:0.85;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 15% 20%, var(--pink) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, var(--blue) 0%, transparent 50%),
+      linear-gradient(160deg, var(--violet) 0%, #2B1355 60%, var(--ink) 100%);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:120px clamp(20px,6vw,80px) 80px;
+  }
+
+  .hero-tag{
+    color:var(--yellow);
+    font-size:clamp(14px,1.6vw,18px);
+    font-weight:600;
+    margin-bottom:18px;
+  }
+
+  .hero h1{
+    color:#fff;
+    font-size:clamp(56px,12vw,168px);
+    letter-spacing:-1px;
+  }
+
+  .hero-sub{
+    max-width:560px;
+    color:#EDE7FF;
+    font-size:clamp(16px,2vw,20px);
+    margin-top:28px;
+    line-height:1.5;
+  }
+
+  .hero-actions{
+    display:flex;
+    gap:16px;
+    margin-top:44px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    display:inline-block;
+    padding:16px 32px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:15px;
+    transition:transform .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-solid{background:var(--pink);color:#fff;}
+  .btn-outline{border:2px solid #fff;color:#fff;}
+
+  .hero-scroll{
+    position:absolute;
+    bottom:36px;
+    left:clamp(20px,6vw,80px);
+    color:#fff;
+    font-size:13px;
+    opacity:0.7;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .hero-scroll .line{width:32px;height:1px;background:#fff;}
+
+  /* ---------- SOBRE ---------- */
+  .sobre{
+    padding:120px clamp(20px,6vw,80px);
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:clamp(40px,6vw,90px);
+    align-items:center;
+  }
+
+  .sobre-art{
+    aspect-ratio:4/5;
+    border-radius:28px;
+    background:
+      radial-gradient(circle at 30% 30%, var(--yellow), transparent 55%),
+      radial-gradient(circle at 75% 70%, var(--pink), transparent 55%),
+      linear-gradient(135deg, var(--violet), var(--blue));
+    position:relative;
+    overflow:hidden;
+  }
+  .sobre-art::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(45deg, rgba(255,255,255,0.07) 0 2px, transparent 2px 14px);
+  }
+
+  .sobre h2{
+    font-size:clamp(32px,4.5vw,52px);
+    margin-bottom:24px;
+  }
+
+  .sobre p{
+    font-size:17px;
+    line-height:1.75;
+    color:#39304F;
+    max-width:52ch;
+  }
+  .sobre p + p{margin-top:18px;}
+
+  .sobre-stats{
+    display:flex;
+    gap:clamp(24px,4vw,56px);
+    margin-top:40px;
+    flex-wrap:wrap;
+  }
+  .stat-num{
+    font-family:'Archivo Black', sans-serif;
+    font-size:36px;
+    color:var(--violet);
+  }
+  .stat-label{font-size:14px;color:#6B6280;margin-top:4px;}
+
+  /* ---------- FAIXAS ---------- */
+  .faixas{
+    background:var(--ink);
+    padding:120px clamp(20px,6vw,80px);
+  }
+
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:56px;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+
+  .faixas h2{color:#fff;font-size:clamp(32px,4.5vw,52px);}
+  .faixas-note{color:#9E93B8;max-width:340px;font-size:15px;line-height:1.6;}
+
+  .track-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:24px;
+  }
+
+  .track-card{
+    background:var(--card-dark);
+    border-radius:20px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .track-card:hover{transform:translateY(-6px);}
+
+  .track-cover{
+    aspect-ratio:1/1;
+    border-radius:14px;
+  }
+  .track-cover.c1{background:linear-gradient(135deg, var(--pink), var(--violet));}
+  .track-cover.c2{background:linear-gradient(135deg, var(--blue), var(--violet));}
+  .track-cover.c3{background:linear-gradient(135deg, var(--yellow), var(--pink));}
+  .track-cover.c4{background:linear-gradient(135deg, var(--violet), var(--blue));}
+
+  .track-info{display:flex;justify-content:space-between;align-items:flex-start;}
+  .track-title{color:#fff;font-weight:600;font-size:17px;}
+  .track-meta{color:#9E93B8;font-size:13px;margin-top:4px;}
+
+  .play-btn{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--pink);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    cursor:pointer;
+  }
+  .play-btn svg{width:16px;height:16px;fill:#fff;margin-left:2px;}
+
+  /* ---------- CONTATO ---------- */
+  .contato{
+    padding:120px clamp(20px,6vw,80px);
+    background:linear-gradient(120deg, var(--pink), var(--violet) 55%, var(--blue));
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(40px,6vw,80px);
+  }
+
+  .contato h2{color:#fff;font-size:clamp(32px,4.5vw,52px);margin-bottom:18px;}
+  .contato p{color:#FFF0F7;font-size:16px;max-width:44ch;line-height:1.6;}
+
+  .socials{
+    display:flex;
+    gap:14px;
+    margin-top:32px;
+  }
+  .social-pill{
+    width:48px;height:48px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s;
+  }
+  .social-pill:hover{background:rgba(255,255,255,0.3);}
+  .social-pill svg{width:20px;height:20px;fill:#fff;}
+
+  form{display:flex;flex-direction:column;gap:14px;}
+  input, textarea{
+    background:rgba(255,255,255,0.92);
+    border:none;
+    border-radius:14px;
+    padding:16px 18px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:15px;
+    color:var(--ink);
+  }
+  textarea{resize:vertical;min-height:120px;}
+  input::placeholder, textarea::placeholder{color:#8A82A0;}
+
+  .send-btn{
+    align-self:flex-start;
+    background:var(--ink);
+    color:#fff;
+    border:none;
+    padding:16px 34px;
+    border-radius:999px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+    transition:transform .2s;
+  }
+  .send-btn:hover{transform:translateY(-2px);}
+
+  .form-status{font-size:14px;color:#3A2E00;min-height:20px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    padding:36px clamp(20px,6vw,80px);
+    display:flex;
+    justify-content:space-between;
+    color:#7C7295;
+    font-size:13px;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  @media (max-width:800px){
+    .sobre, .contato{grid-template-columns:1fr;}
+    .sobre-art{aspect-ratio:16/9;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+
+  :focus-visible{
+    outline:3px solid var(--yellow);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">A·DR</div>
+  <div class="nav-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#faixas">Faixas</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Produtor & artista — hip-hop / trap</div>
+  <h1 class="display">AYALA<br>DOS REYS</h1>
+  <p class="hero-sub">Batidas pesadas, letras cruas e uma produção que mistura trap moderno com groove próprio. Bem-vindo ao meu universo sonoro.</p>
+  <div class="hero-actions">
+    <a href="#faixas" class="btn btn-solid">Ouvir as faixas</a>
+    <a href="#contato" class="btn btn-outline">Falar comigo</a>
+  </div>
+  <div class="hero-scroll"><span class="line"></span> role para explorar</div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="sobre-art"></div>
+  <div>
+    <h2 class="display">Sobre mim</h2>
+    <p>Sou Ayala Dos Reys, produtor e artista de hip-hop/trap. Construo cada faixa a partir da batida — camadas de 808, hi-hats afiados e samples que dão textura — antes de escrever uma única linha.</p>
+    <p>O objetivo é simples: som que bate forte no carro, no fone e no palco, com histórias reais por trás de cada verso.</p>
+    <div class="sobre-stats">
+      <div>
+        <div class="stat-num">12+</div>
+        <div class="stat-label">faixas produzidas</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">produção autoral</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">projetos em andamento</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faixas" id="faixas">
+  <div class="section-head">
+    <h2 class="display">Faixas em destaque</h2>
+    <p class="faixas-note">Uma seleção do que venho produzindo. Substitua pelos seus lançamentos reais e links de streaming.</p>
+  </div>
+  <div class="track-grid">
+    <div class="track-card">
+      <div class="track-cover c1"></div>
+      <div class="track-info">
+        <div>
+          <div class="track-title">Nome da Faixa 1</div>
+          <div class="track-meta">Single · 2:45</div>
+        </div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+    </div>
+    <div class="track-card">
+      <div class="track-cover c2"></div>
+      <div class="track-info">
+        <div>
+          <div class="track-title">Nome da Faixa 2</div>
+          <div class="track-meta">Single · 3:10</div>
+        </div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+    </div>
+    <div class="track-card">
+      <div class="track-cover c3"></div>
+      <div class="track-info">
+        <div>
+          <div class="track-title">Nome da Faixa 3</div>
+          <div class="track-meta">EP · 2:58</div>
+        </div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+    </div>
+    <div class="track-card">
+      <div class="track-cover c4"></div>
+      <div class="track-info">
+        <div>
+          <div class="track-title">Nome da Faixa 4</div>
+          <div class="track-meta">Single · 3:32</div>
+        </div>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contato" id="contato">
+  <div>
+    <h2 class="display">Vamos trabalhar juntos</h2>
+    <p>Parcerias, shows, produção para outros artistas ou só pra trocar uma ideia — me chama.</p>
+    <div class="socials">
+      <a class="social-pill" href="https://www.instagram.com/ayala_dosreys.txoboyr/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 .01 4.1.06 1.1.05 1.85.22 2.5.48.68.26 1.25.62 1.82 1.18.56.56.92 1.14 1.18 1.82.26.65.43 1.4.48 2.5.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.05 1.1-.22 1.85-.48 2.5a4.9 4.9 0 0 1-1.18 1.82 4.9 4.9 0 0 1-1.82 1.18c-.65.26-1.4.43-2.5.48-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1.1-.05-1.85-.22-2.5-.48a4.9 4.9 0 0 1-1.82-1.18 4.9 4.9 0 0 1-1.18-1.82c-.26-.65-.43-1.4-.48-2.5C2.01 15 2 14.7 2 12s.01-3 .06-4.1c.05-1.1.22-1.85.48-2.5.26-.68.62-1.25 1.18-1.82A4.9 4.9 0 0 1 5.54 2.4c.65-.26 1.4-.43 2.5-.48C8.14 1.87 8.68 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zM17.6 6.4a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>
+      </a>
+      <a class="social-pill" href="https://spotify.link/QeUCB0EnLDb" target="_blank" rel="noopener" aria-label="Spotify">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.4 14.4c-.18.3-.56.4-.86.22-2.36-1.44-5.33-1.77-8.83-.97-.34.08-.68-.13-.76-.47-.08-.34.13-.68.47-.76 3.83-.88 7.12-.5 9.76 1.11.3.18.4.56.22.87zm1.2-2.7c-.22.36-.7.48-1.06.26-2.7-1.66-6.82-2.14-10.02-1.17-.4.12-.83-.1-.96-.5-.12-.4.1-.83.5-.96 3.65-1.1 8.17-.57 11.27 1.32.36.22.48.7.27 1.05zm.1-2.8c-3.24-1.92-8.6-2.1-11.7-1.16-.48.15-1-.13-1.15-.6-.15-.48.13-1 .6-1.15 3.56-1.08 9.46-.87 13.2 1.35.44.26.58.83.32 1.27-.26.44-.83.58-1.27.29z"/></svg>
+      </a>
+      <a class="social-pill" href="https://youtube.com/@ayaladosreys" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.3 3.5-6.3 3.5z"/></svg>
+      </a>
+    </div>
+  </div>
+  <form id="contactForm">
+    <input type="text" placeholder="Seu nome" required>
+    <input type="email" placeholder="Seu e-mail" required>
+    <textarea placeholder="Sua mensagem"></textarea>
+    <button type="submit" class="send-btn">Enviar mensagem</button>
+    <div class="form-status" id="formStatus"></div>
+  </form>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> Ayala Dos Reys. Todos os direitos reservados.</div>
+  <div><a href="mailto:ayaladosreys11@gmail.com">ayaladosreys11@gmail.com</a></div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    status.textContent = 'Mensagem enviada! Vou te responder em breve.';
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
