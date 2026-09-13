@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayala Dos Reys — EPK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Archivo+Expanded:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #14110E;
+    --bg-alt: #1C1712;
+    --surface: #211B15;
+    --line: #3A2F24;
+    --text: #F3ECE1;
+    --text-muted: #A99A87;
+    --ember: #C9922D;
+    --blood: #7A2B23;
+    --blood-bright: #A63B2E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Archivo', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--ember); color:#14110E;}
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 78% 18%, rgba(201,146,45,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 700px at 100% 100%, rgba(122,43,35,0.20), transparent 65%),
+      var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    width:100%;
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;
+    align-items:center;
+    gap:40px;
+  }
+  .kicker{
+    font-size:14px;
+    color:var(--text-muted);
+    font-weight:500;
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .kicker .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--ember);
+    box-shadow:0 0 0 4px rgba(201,146,45,0.15);
+  }
+  .name{
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:900;
+    font-size:clamp(52px, 8.2vw, 118px);
+    line-height:0.92;
+    letter-spacing:-0.01em;
+    opacity:0;
+    animation:riseIn 0.9s cubic-bezier(.2,.8,.2,1) 0.15s forwards;
+  }
+  @keyframes riseIn{
+    from{opacity:0; transform:translateY(18px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .name .accent{color:var(--ember);}
+  .tagline{
+    margin-top:26px;
+    max-width:480px;
+    font-size:19px;
+    color:var(--text-muted);
+    font-weight:400;
+    opacity:0;
+    animation:riseIn 0.9s cubic-bezier(.2,.8,.2,1) 0.35s forwards;
+  }
+  .hero-facts{
+    margin-top:38px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    opacity:0;
+    animation:riseIn 0.9s cubic-bezier(.2,.8,.2,1) 0.5s forwards;
+  }
+  .hero-fact{
+    display:flex;
+    gap:14px;
+    font-size:14.5px;
+    color:var(--text-muted);
+    border-left:2px solid var(--line);
+    padding-left:14px;
+  }
+  .hero-fact b{color:var(--text); font-weight:600;}
+
+  .portrait{
+    aspect-ratio:4/5;
+    border-radius:4px;
+    position:relative;
+    background:
+      linear-gradient(160deg, var(--surface) 0%, #171310 100%);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .portrait img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 20%;
+    filter:grayscale(0.15) sepia(0.12) saturate(1.05) contrast(1.03);
+    mix-blend-mode:normal;
+  }
+  .portrait::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,17,14,0) 55%, rgba(20,17,14,0.55) 100%),
+               linear-gradient(90deg, rgba(20,17,14,0.18), transparent 30%);
+    pointer-events:none;
+  }
+  .portrait .grain{
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px);
+    pointer-events:none;
+    z-index:2;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:110px 0;}
+  .section-head{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-bottom:52px;
+    align-items:end;
+  }
+  .section-num{
+    font-size:14px; color:var(--ember); font-weight:600;
+  }
+  h2{
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:900;
+    font-size:clamp(32px, 4vw, 46px);
+    line-height:1.05;
+    margin-top:10px;
+  }
+  .lede{
+    font-size:17px;
+    color:var(--text-muted);
+    align-self:end;
+  }
+
+  /* ---------- BIO ---------- */
+  .bio{background:var(--bg);}
+  .bio-body{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:64px;
+  }
+  .bio-body p{
+    font-size:19px;
+    color:#DCD2C4;
+    max-width:56ch;
+  }
+  .bio-body p + p{margin-top:20px;}
+  .quick-list{
+    display:flex; flex-direction:column; gap:0;
+    border-top:1px solid var(--line);
+  }
+  .quick-list div{
+    display:flex; justify-content:space-between;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .quick-list span:first-child{color:var(--text-muted);}
+  .quick-list span:last-child{color:var(--text); font-weight:600; text-align:right;}
+
+  /* ---------- SOUND / LISTEN ---------- */
+  .sound{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .player-frame{
+    border-radius:6px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--surface);
+  }
+  .listen-links{
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .listen-links a{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:13px 22px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    font-size:14.5px;
+    font-weight:600;
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .listen-links a:hover{
+    border-color:var(--ember);
+    background:rgba(201,146,45,0.07);
+  }
+  .listen-links svg{width:16px; height:16px;}
+
+  /* ---------- LABEL ---------- */
+  .label-section{
+    background:
+      linear-gradient(120deg, var(--blood) 0%, #5C221D 100%);
+    color:#F6EAE1;
+  }
+  .label-section .section-num{color:#F0C9A8;}
+  .label-section .lede{color:#E7CDBE;}
+  .label-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .label-mark{
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:900;
+    font-size:clamp(30px, 4.4vw, 52px);
+    line-height:1.04;
+    border-left:4px solid #F0C9A8;
+    padding-left:22px;
+  }
+  .label-grid p{
+    font-size:17px;
+    color:#EFDCC9;
+    max-width:48ch;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--bg);}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  .contact-cta{
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:900;
+    font-size:clamp(34px, 5.4vw, 60px);
+    line-height:1.05;
+  }
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .contact-links a{
+    display:block;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+    font-size:20px;
+    font-weight:600;
+    transition:color 0.2s ease, padding-left 0.2s ease;
+  }
+  .contact-links a:hover{color:var(--ember); padding-left:8px;}
+  .contact-links span{
+    display:block;
+    font-size:12.5px;
+    color:var(--text-muted);
+    font-weight:400;
+    margin-top:4px;
+  }
+  footer{
+    padding:36px 0 44px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:13px;
+    color:var(--text-muted);
+  }
+  footer .socials{display:flex; gap:20px;}
+  footer .socials a:hover{color:var(--ember);}
+
+  @media (max-width:820px){
+    .hero-grid, .bio-body, .label-grid, .contact-grid, .section-head{
+      grid-template-columns:1fr;
+    }
+    .section-head{gap:14px;}
+    .lede{align-self:start;}
+    .portrait{margin-top:44px; max-width:340px;}
+    section{padding:76px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .name, .tagline, .hero-facts{animation:none; opacity:1;}
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker"><span class="dot"></span>Electronic Press Kit</div>
+        <h1 class="name">AYALA<br>DOS <span class="accent">REYS</span></h1>
+        <p class="tagline">Artista e produtor musical angolano. A música como forma de expressão e verdade — Trap, R&B e ritmos contemporâneos com raízes em Angola.</p>
+        <div class="hero-facts">
+          <div class="hero-fact"><b>Base</b>&nbsp;— Angola</div>
+          <div class="hero-fact"><b>Género</b>&nbsp;— Trap / R&B / Contemporâneo</div>
+          <div class="hero-fact"><b>Label</b>&nbsp;— Tropa Extremamente Dura</div>
+        </div>
+      </div>
+      <div class="portrait">
+        <img src="photo_clean.jpg" alt="Ayala Dos Reys">
+        <div class="grain"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bio">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Biografia</div>
+          <h2>Experiências reais, transformadas em letra.</h2>
+        </div>
+        <p class="lede">De Angola para o mundo — uma sonoridade que carrega verdade, emoção e a cena musical que ajuda a construir.</p>
+      </div>
+      <div class="bio-body">
+        <div>
+          <p>Ayala Dos Reys é artista e produtor musical angolano, apaixonado pela música como forma de expressão e verdade. Com uma sonoridade que transita entre o Trap, o R&B e ritmos contemporâneos, transforma experiências reais em letras profundas, com emoção e autenticidade.</p>
+          <p>Além de cantor e compositor, actua como engenheiro de som e é fundador da label Tropa Extremamente Dura, contribuindo activamente para o crescimento da nova cena musical angolana.</p>
+        </div>
+        <div class="quick-list">
+          <div><span>Papel</span><span>Artista · Produtor · Eng. de som</span></div>
+          <div><span>Estilo</span><span>Trap / R&B</span></div>
+          <div><span>Label</span><span>Tropa Extremamente Dura</span></div>
+          <div><span>Origem</span><span>Angola</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sound">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Ouvir</div>
+          <h2>O som, em primeira mão.</h2>
+        </div>
+        <p class="lede">Álbum e faixas disponíveis nas principais plataformas.</p>
+      </div>
+      <div class="player-frame">
+        <iframe style="border-radius:6px" src="https://open.spotify.com/embed/album/1u79ZmSndxAzhkPtozHHqY?utm_source=generator&theme=0" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+      <div class="listen-links">
+        <a href="https://spotify.link/QeUCB0EnLDb" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://youtube.com/@ayaladosreys" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.instagram.com/ayala_dosreys.txoboyr/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="label-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Label</div>
+          <h2>Tropa Extremamente Dura.</h2>
+        </div>
+      </div>
+      <div class="label-grid">
+        <div class="label-mark">Construir a nova cena musical angolana, faixa a faixa.</div>
+        <p>Para além da carreira a solo, Ayala Dos Reys é fundador da Tropa Extremamente Dura, uma label dedicada a impulsionar novos artistas e a fortalecer a cena musical de Angola — dos bastidores de engenharia de som à direcção criativa de cada projecto.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-num">Contacto</div>
+          <h2 class="contact-cta">Bookings, parcerias e imprensa.</h2>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-links">
+          <a href="mailto:ayaladosreys11@gmail.com">ayaladosreys11@gmail.com<span>Email — a via mais rápida para propostas</span></a>
+          <a href="tel:+244945755652">+244 945 755 652<span>Telefone / WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <div>© 2026 Ayala Dos Reys · Tropa Extremamente Dura</div>
+    <div class="socials">
+      <a href="https://www.instagram.com/ayala_dosreys.txoboyr/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com/@ayaladosreys" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://spotify.link/QeUCB0EnLDb" target="_blank" rel="noopener">Spotify</a>
+    </div>
+  </footer>
+
+</body>
+</html>
